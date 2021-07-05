@@ -11,7 +11,6 @@ const RegistrationUser = () => {
   const history = useHistory();
 
   const handleSubmit = (values) => {
-    console.log("Komponenta")
     dispatch(postUser({values,history}));
   };
 
