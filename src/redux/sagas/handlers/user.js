@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "@redux-saga/core/effects";
-import { requestPostUser } from "../request/user";
-import { requestLoginUser } from "../request/baseApiService";
+import { requestPostUser } from "../request/userRegistration";
+import { requestLoginUser } from "../request/userLogin";
 import { POST_USER, LOGIN } from "../../user/user.types";
 import { loginSucceeded, postUserSuccess } from "../../user/user.actions";
 
@@ -9,7 +9,7 @@ import { loginSucceeded, postUserSuccess } from "../../user/user.actions";
 function* handlePostUser({ payload }) {
   console.log(payload);
   try {
-    const response = yield call(() => requestPostUser(payload.values));
+    const response = yield call(requestPostUser, payload.values);
     const { data } = response;
     yield put(postUserSuccess(data));
     payload.history.push("/login");

@@ -37,7 +37,6 @@ const RegistrationUser = () => {
       validationSchema={validate}
       onSubmit={handleSubmit}
     >
-      {(formik) => (
         <div>
           <h1>Sign up</h1>
           <Form>
@@ -48,7 +47,6 @@ const RegistrationUser = () => {
             <button type="submit">Register</button>
           </Form>
         </div>
-      )}
     </Formik>
   );
 };

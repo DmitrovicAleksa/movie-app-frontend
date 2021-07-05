@@ -7,7 +7,7 @@ const intitalState = {
   user: {},
 };
 
-export const userReducer = (state = intitalState, action) => {
+export const registerReducer = (state = intitalState, action) => {
   switch (action.type) {
     case POST_USER_SUCCESS:
       return {
