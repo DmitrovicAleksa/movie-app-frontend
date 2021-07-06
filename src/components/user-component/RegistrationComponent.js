@@ -11,7 +11,6 @@ const RegistrationUser = () => {
   const history = useHistory();
 
   const handleSubmit = (values) => {
-    console.log("Komponenta")
     dispatch(postUser({values,history}));
   };
 
@@ -38,7 +37,6 @@ const RegistrationUser = () => {
       validationSchema={validate}
       onSubmit={handleSubmit}
     >
-      {(formik) => (
         <div>
           <h1>Sign up</h1>
           <Form>
@@ -49,7 +47,6 @@ const RegistrationUser = () => {
             <button type="submit">Register</button>
           </Form>
         </div>
-      )}
     </Formik>
   );
 };
