@@ -1,5 +1,10 @@
 import axiosInstance from "./axios";
 
 export async function requestLoginUser(payload) {
-  return await axiosInstance.post("/login/", payload);
+  const data =  await axiosInstance.post("/login/", payload);
+  console.log(data)
+  const accessToken = data.data.access;
+  axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`
+
+  return data
 }

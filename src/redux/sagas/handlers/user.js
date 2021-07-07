@@ -7,7 +7,6 @@ import { loginSucceeded, postUserSuccess } from "../../user/user.actions";
 // REGISTER USER SAGA
 
 function* handlePostUser({ payload }) {
-  console.log(payload);
   try {
     const response = yield call(requestPostUser, payload.values);
     const { data } = response;
@@ -26,7 +25,7 @@ export function* handeleLoginUser({ payload }) {
     const { data } = response;
     yield put(loginSucceeded(data));
     localStorage.setItem("token", data.access);
-    // payload.history.push("/movies");
+    payload.history.push("/movies");
   } catch (error) {
     console.log(error);
     localStorage.removeItem("token");
