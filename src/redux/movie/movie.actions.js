@@ -1,6 +1,8 @@
 import {
   GET_MOVIES,
   GET_MOVIES_SUCCESS,
+  POST_MOVIE,
+  POST_MOVIE_SUCCESS,
 } from "./movie.types";
 
 export const getMovies = () => {
@@ -15,3 +17,20 @@ export const getMoviesSuccess = (payload) => {
     payload,
   };
 };
+
+export const postMovie = (payload) => {
+  console.log(payload)
+  return {
+    type: POST_MOVIE,
+    payload,
+  };
+};
+
+export const postMovieSuccess = (payload) => {
+  return {
+    type: POST_MOVIE_SUCCESS,
+    payload,
+  };
+};
+
+

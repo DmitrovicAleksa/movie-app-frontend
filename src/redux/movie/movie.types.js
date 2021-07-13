@@ -1,2 +1,5 @@
 export const GET_MOVIES = "GET_MOVIES";
 export const GET_MOVIES_SUCCESS = "GET_MOVIES_SUCCESS";
+export const POST_MOVIE = "POST_MOVIE";
+export const POST_MOVIE_SUCCESS = "POST_MOVIE_SUCCESS";
+

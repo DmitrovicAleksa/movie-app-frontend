@@ -1,5 +1,7 @@
 import axiosInstance from "./axios";
 
 export async function requestMovieList() {
-  return await axiosInstance.get("/movies/");
+ return await axiosInstance.get("/movies/");
+  
+
 }
