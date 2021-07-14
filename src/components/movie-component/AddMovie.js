@@ -12,7 +12,7 @@ const AddMovie = () => {
 
   const handleSubmit = (values) => {
     dispatch(postMovie(values));
-   
+    console.log(values.image);
   };
 
   useEffect(() => {
@@ -20,12 +20,8 @@ const AddMovie = () => {
     // eslint-disable-next-line
   }, []);
 
-  const genres = useSelector((state) => state.genreReducer.genres);
+  const genre = useSelector((state) => state.genreReducer.genres);
 
-  const onSelect = (genres) => {
-    console.log(genres);
-  }
- 
 
   const validate = Yup.object({
     title: Yup.string()
@@ -35,33 +31,36 @@ const AddMovie = () => {
       .max(1000, "Must be 1000 characters or less")
       .required("Description is required"),
     image: Yup.mixed().required(),
+    genre: Yup.array(),
   });
   return (
     <Formik
       initialValues={{
         title: "",
         description: "",
-        image: "",
+        image: {},
+        genre: [],
       }}
       validationSchema={validate}
       onSubmit={handleSubmit}
-    >
-      <div>
-        <h1>Add movie</h1>
-        <Form>
-          <TextField label=" title :" name="title" type="text" />
-          <TextField label="description :" name="description" type="text" />
-          <TextField
-            label="image :"
-            name="image"
-            type="file"
-          />
-            <Multiselect name="genres" options={genres} displayValue='name' onSelect={onSelect}></Multiselect>
-         
-          <button type="submit">add</button>
-        </Form>
-      </div>
-    </Formik>
+      render={({ values, setFieldValue }) => (
+        <div>
+          <h1>Add movie</h1>
+          <Form>
+            <TextField label=" title :" name="title" type="text" />
+            <TextField label="description :" name="description" type="text" />
+            <TextField value={values.image.fileName} label="image :" name="image" type="file" onChange={(e) =>setFieldValue("image", e.target.files[0]) } />
+            <Multiselect
+              name="genre"
+              options={genre}
+              displayValue="name"
+              onSelect={(evt) => setFieldValue("genre", evt)}
+            ></Multiselect>
+            <button type="submit">add</button>
+          </Form>
+        </div>
+      )}
+    />
   );
 };
 

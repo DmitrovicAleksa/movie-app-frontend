@@ -15,11 +15,7 @@ const MovieList = () => {
   }, []);
 
   const movies = useSelector((state) => state.movieReducer.movies);
-  console.log(movies);
-  movies.map( (movie) => {
-    console.log(movie.image);
-  })
-  console.log(movies.image);
+  
 
   return (
     <div>

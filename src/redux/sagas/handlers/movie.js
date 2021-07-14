@@ -16,9 +16,11 @@ function* handleGetMovies() {
 }
 
 function* handlePostMovie({ payload }) {
+  console.log(payload.image)
   try {
-    const response = yield call(requestMoviePost, payload.values);
+    const response = yield call(requestMoviePost, payload);
     const { data } = response;
+    console.log(data);
     yield put(postMovieSuccess(data));
   } catch (error) {
     console.log(error);
